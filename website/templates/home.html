@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Home
+{% endblock %}
+
+
+{% block content %}
+
+<div style="width: 50%; margin: auto">
+    <div style="overflow: auto; height: 250px">
+        <ol class="list-group list-group-flush list-group-numbered" id="notes">
+            {% for note in user.notes %}
+            <li class="list-group-item">{{note.data}}
+            <button type="button" class="close" onclick="deleteNote({{ note.id }})">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </li>
+            {% endfor %}
+        </ol>
+    </div>
+
+<form method="post">
+    <div class="mb-3">
+  <label for="note" class="form-label">Example textarea</label>
+  <textarea class="form-control" id="note" name="note" rows="3"></textarea>
+</div>
+<button type="submit" class="btn btn-primary">Add Note</button>
+</form></div>
+{% endblock %}
